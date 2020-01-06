@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% block title %}- Login{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+  <div class="row no-gutter">
+    <div class="d-none d-md-flex col-md-4 col-lg-6 bg-image">
+        <img src="https://source.unsplash.com/WEQbe2jBg40/600x1200"/>
+    </div>
+    <div class="col-md-8 col-lg-6">
+      <div class="login d-flex align-items-center py-5">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-9 col-lg-8 mx-auto">
+              <h3 class="login-heading mb-4">{{ res_data.error }}</h3>
+              <form action="{% url 'login' %}" method="post">
+                  {% csrf_token %}
+                <div class="form-label-group">
+                  <input type="text" id="username" class="form-control" placeholder="Student ID" value autocomplete="off" required autofocus >
+                  <label for="username">학번</label>
+                </div>
+
+                <div class="form-label-group">
+                  <input type="password" id="password" class="form-control" placeholder="Password" required>
+                  <label for="password">비밀번호</label>
+                </div>
+                <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit" value="Login">Sign in</button>
+                <div class="text-center">
+                  <a class="small" href="#">Forgot password?</a></div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8 panel panel-default">
+            <div class="alert alert-info">{{ res_data.error }}</div>
+            <form action="{% url 'login' %}" method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                        <div class="form-inline">
+                            <label class="col-sm-2">학번</label>
+                            <div class="col-sm-5">
+                                <input type="text" name="username" class="form-control"	placeholder="학번을 입력하세요" value autocomplete="off">
+                            </div>
+                        </div>
+                        <br>
+
+                        <div class="form-inline">
+                            <label class="col-sm-2">비밀번호</label>
+                            <div class="col-sm-5">
+                                <input type="text" name="password" class="form-control" placeholder="비밀번호를 입력하세요" value autocomplete="off">
+                            </div>
+                        </div>
+                        <br>
+                <input class="btn btn-primary" type="submit" value="Login">
+            </form>
+        </div>
+        <div class="col-md-2"></div>
+</div>
+{% endblock %}

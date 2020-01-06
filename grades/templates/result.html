@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% if grade_list %}
+    <div class="table-responsive-sm">
+        <table class="table table-striped .table-hover small">
+            <tr>
+                <th><p>과목명</p></th><th><p>중간점수</p></th><th>중간평균</th><th>중간등수</th><th>기말점수</th><th>기말평균</th><th>기말등수</th>
+            </tr>
+
+
+            {% for grade, mid_aver, final_aver, mid_pos, final_pos in grade_list %}
+            <tr>
+                <td><p>{{ grade.lecture}}</p></td><td><p>{{ grade.mid_term}}</p></td><td><p>{{ mid_aver }}</p></td>
+                <td><p>{{ mid_pos }}</p></td><td><p>{{ grade.final_term}}</p></td><td><p>{{ final_aver }}</p></td>
+                <td><p>{{ final_pos }}</p></td>
+            </tr>
+            {% endfor %}
+
+
+
+            <!--
+            <tr>
+                <td>null</td>
+                <td>0</td>
+                <td>null</td>
+                <td>0</td>
+                <td>0</td>
+            </tr>
+             -->
+        </table>
+        <div>
+            <a class="btn btn-primary" href="{% url 'index' %}">Home</a>
+        </div>
+    </div>
+{% else %}
+    <p>No data.</p>
+{% endif %}
+
+{% endblock %}
+
+
+
+
